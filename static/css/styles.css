@@ -1,0 +1,108 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    color: #999;
+}
+
+.captured-image {
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-container h1 {
+        font-size: 1.5em;
+    }
+
+    .form-container .btn {
+        font-size: 1em;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .form-container {
+        padding: 25px;
+    }
+
+    .form-container h1 {
+        font-size: 1.75em;
+    }
+
+    .form-container .btn {
+        font-size: 1.1em;
+    }
+
+    .container {
+        margin-top: 75px;
+    }
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.btn-group .btn {
+    margin: 5px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBag - Recibo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .receipt-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .receipt-details, .payment-details {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SecureBag</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <header class="text-center my-5">
+            <h1 class="display-4">Recibo del Contrato Inteligente</h1>
+        </header>
+        <main>
+            <div class="receipt-container">
+                <div class="receipt-header">
+                    <h5>Detalles del contrato:</h5>
+                </div>
+                <div class="receipt-details">
+                    <p><strong>Dirección del contrato:</strong> {{ tx_receipt.contractAddress }}</p>
+                    <p><strong>Hash de la transacción:</strong> {{ tx_receipt.transactionHash }}</p>
+                </div>
+                <div class="payment-details">
+                    <h5>Detalles del pago:</h5>
+                    <p><strong>Hash de la transacción de pago:</strong> {{ payment_receipt.transactionHash }}</p>
+                    <p><strong>Gas usado:</strong> {{ payment_receipt.gasUsed }}</p>
+                    <p><strong>Estado:</strong> {{ 'Éxito' }}</p>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center mt-5">
+            <p>&copy; 2024 SecureBag</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

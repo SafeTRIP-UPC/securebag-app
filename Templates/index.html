@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBag - Estimación de Equipaje</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SecureBag</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <header class="text-center my-5">
+            <h1 class="display-4">SecureBag</h1>
+            <p class="lead">¡Estima el valor de tu equipaje en segundos!</p>
+        </header>
+        <main>
+            <section class="text-center mb-5">
+                <h2>¿Cómo funciona?</h2>
+                <p>Usa tu cámara para capturar una imagen de tu equipaje y nosotros te ayudaremos a estimar su valor.</p>
+            </section>
+            <div class="text-center">
+                <div class="embed-responsive embed-responsive-4by3 mb-4">
+                    <video id="camera" class="embed-responsive-item" autoplay></video>
+                </div>
+                <button id="capture-btn" class="btn btn-primary btn-lg mb-3">Capturar</button>
+                <div class="form-group">
+                    <label for="num-scales">Número de escalas:</label>
+                    <input type="number" id="num-scales" class="form-control" min="0" value="0" style="width: 80px; margin: 0 auto;">
+                </div>
+                <canvas id="canvas" style="display:none;"></canvas>
+            </div>
+        </main>
+        <footer class="text-center mt-5">
+            <p>&copy; 2024 SecureBag</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

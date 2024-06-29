@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de la Estimación</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Resultado de la Estimación</h2>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title text-center">Valor Estimado de su Equipaje</h4>
+                <p class="card-text text-center">{{ estimated_value }} soles</p>
+                <div class="text-center">
+                    <img src="{{ image_url }}" alt="Imagen del Equipaje" class="img-thumbnail">
+                </div>
+                <h5 class="mt-4">Detalle de la Cotización:</h5>
+                <ul class="list-group list-group-flush">
+                    {% for item, value in details.items() %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ item }}
+                            <span class="badge badge-primary badge-pill">{{ value }} soles</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="mt-4 text-center">
+                    <form id="generate-contract-form" action="/generate_contract" method="POST" onsubmit="event.preventDefault(); generateContract();">
+                        <input type="hidden" name="value" value="{{ estimated_value }}">
+                        <button type="submit" class="btn btn-success">Aceptar Cotización</button>
+                    </form>
+                    <a href="/" class="btn btn-danger">Cancelar</a>
+                    <a href="/" class="btn btn-secondary">Volver a Cotizar</a>
+                    
+                    <script>
+                    function generateContract() {
+                        const form = document.getElementById('generate-contract-form');
+                        const value = form.querySelector('input[name="value"]').value;
+                    
+                        fetch('/generate_contract', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ value: value })
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            // Manejar la respuesta del servidor
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with the fetch operation:', error);
+                        });
+                    }
+                    </script>
+                </div>
+            </div>
+            <div class="card-footer text-muted text-center">
+                &copy; 2024 SecureBag
+            </div>
+        </div>
+    </div>
+</body>
+</html>
